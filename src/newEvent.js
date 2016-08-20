@@ -23,10 +23,13 @@ $('.header__add-event').on('click', function() {
     $('.feed').prepend(form);
     $('.form__control').submit(function() {
         var data = {
-          title: $('input[name=title]').val(),
-          date: $('input[name=date]').val(),
-          location: $('input[name=location]').val(),
-          description: $('textarea[name=description]').val()
+            title: $('input[name=title]').val(),
+            date: $('input[name=date]').val(),
+            location: {
+                title: $('input[name=location]').val(),
+                coords: ''
+            },
+            description: $('textarea[name=description]').val()
         };
         addEvent(data);
         return false;
