@@ -12,8 +12,7 @@
 				events.push(parseEvent(data[i]));
 			}
 
-			//here logc to process update ui
-			console.log(events);
+			$('.feed').html(bh.apply(events)) ;
 		}
 	});
 
@@ -28,8 +27,9 @@
 						content: [
 							{ elem: 'title', content: title },
 							{ elem: 'date', content: result.date  },
-							{ elem: 'location', content: result.location.title },
-							{ elem: 'coordinate', content: result.location.coords },
+							{ elem: 'location', content: result.location.title, attrs: {
+									'data-cords': result.location.coords
+							}},
 							{ elem: 'description', content: result.description }
 						]
 	 }
