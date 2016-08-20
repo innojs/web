@@ -32,6 +32,7 @@ $('.header__add-event').on('click', function() {
             description: $('textarea[name=description]').val()
         };
         addEvent(data);
+        $('.feed').remove(form);
         return false;
     });
 
