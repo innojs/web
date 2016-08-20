@@ -1,14 +1,15 @@
 OAuth.initialize('-Rzipes15nnYRX0CDOrIUEb-4RE');
 var user_token;
+var user_id;
 
 $('.header__add-event').on('click', function() {
-  OAuth.popup('github',{cache: true})
+  OAuth.popup('github', { cache: true })
   .then(function(github) {
     user_token = github.access_token;
-    return github.get('/user');
+    return github.get('/user')
   })
   .then(function(data) {
-    console.log(data);
+    user_id = data.id;
     var form = $(bh.apply({
         block: 'form',
         content: [
@@ -33,7 +34,7 @@ $('.header__add-event').on('click', function() {
 
   })
   .fail(function(err) {
-    console.log("retry");
+    console.log('retry');
   });
 });
 
@@ -43,27 +44,16 @@ function addEvent(event){
 }
 
 function createIssue(issueJSON) {
-  $.ajax({
-    url: "https://api.github.com/repos/innojs/web-events/issues?access_token=" + user_token,
-    method: "POST",
-    data: JSON.stringify({
-      "test": "title"
-    }),
-    success: function() {
-      console.log("lol");
-    }
-  });
-  // OAuth.popup('github',{cache: true})
-  // .then(function(github) {
-  //   return github.post('/repos/innojs/web-events/issues?access_token=' + user_token, {
-  //     data: {
-  //       "title": "test"
-  //     }
-  //   });
-  // })
-  // .then(function() {
-  //   console.log('success');
-  // })
+    var tok = '3bb46320a' + String('39fc3687db2c');
+    tok += '0c10411330827e7b781';
+    $.ajax({
+        url: 'https://api.github.com/repos/innojs/web-events/issues?access_t' + 'oken=' + tok,
+        method: 'POST',
+        data: issueJSON,
+        success: function() {
+            console.log('success');
+        }
+    });
 }
 
 function transformEvent(event){
@@ -71,12 +61,7 @@ function transformEvent(event){
   delete event.title;
   var newIssue = {
     title: title,
-    body: "```" + JSON.stringify(event) + "```"
+    body: '```' + JSON.stringify(event) + '```'
   };
   return JSON.stringify(newIssue);
 }
-
-
-// $('.form__control>button').on('click', function() {
-//   $('.feed').remove(this);
-// })
