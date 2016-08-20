@@ -1,0 +1,30 @@
+.header
+    height: 50px;
+    background: white;
+    border-bottom: 2px solid black;
+
+    &__title
+        font-size: 300%;
+        line-height: 50px;
+        padding: 0 20px;
+        float: left;
+
+    &__add-event
+        border: 1px solid black;
+        background: white;
+        font-size: 150%;
+        height: 30px;
+        margin: 10px;
+        box-sizing: border-box;
+        float: right;
+
+        &_small
+            display: none;
+
+@media screen and (max-width: 640px)
+    .header__add-event
+        display: none;
+
+        &_small
+            display: block;
+
