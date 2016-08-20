@@ -6,6 +6,10 @@
     padding: $layoutGapVertical 0 0 $layoutGapHorizontal
     box-sizing: border-box
 
+    &_with-event-full
+        .event:not(.event_full)
+            display: none
+
 @media screen and (max-width: $minimalPageWidth)
     .feed
         width: auto
