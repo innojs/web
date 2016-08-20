@@ -9,7 +9,11 @@
   if (xhr.status != 200) {
     console.log("УВАГА")
   } else {
-     events = xhr.responseText; 
+     events = xhr.responseText;
+  }
+
+  function updateFeed(bemjson) {
+    document.querySelector('.feed').innerHTML(bh.apply(bemjson));
   }
 
 })()
