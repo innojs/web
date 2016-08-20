@@ -15,7 +15,6 @@ function getIssues() {
 			for (var i = 0; i < data.length; i++) {
 				events.push(parseEvent(data[i]));
 			}
-
 			//here logc to process update ui
 			console.log(events);
 		}
@@ -29,4 +28,33 @@ function parseEvent(issue){
 	return result;
 }
 
+function addEvent(event){
+	var issue = transformEvent(event);
+	createIssue(issue);
+}
 
+function transformEvent(event){
+	var newIssue = {
+		title: event.title, //nonexisting field
+		body: "```" + JSON.stringify(event) + "```"
+	};
+	return JSON.stringify(newIssue);
+
+}
+
+function createIssue(issueJSON) {
+	$.ajax({
+		url: "http://api.github.com/repos/innojs/web-events/issues",
+		data: issueJSON,
+		method:"POST",
+	});
+}
+
+function addParticipant(login, eventNumber) {
+
+	$.ajax({
+		url: "http://api.github.com/repos/innojs/web-events/issues/" + eventNumber + "/assignees",
+		data: [login],
+		method:"POST",
+	});
+}
