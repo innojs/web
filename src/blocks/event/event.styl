@@ -1,43 +1,66 @@
+@import('../../variables.styl')
+
 .event
-    width: 250px
-    height: 250px
-    margin: 0 20px 20px 0
+    width: $colWidth
+    height: $rowHeight
+    margin: 0 $gapHorizontal $gapVertical 0
     padding: 20px
     box-sizing: border-box
 
+    position: relative
+    z-index: 1
+
     float: left
 
-    border: 1px solid rgba(0,0,0,0.3)
+    background-position: 50% 50%
+    background-repeat: no-repeat
+    background-size: cover
+
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .3)
+
+    &::before
+        position: absolute
+        z-index: -1
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+
+        background: rgba(255, 255, 255, .3)
+
+        content: ''
+
+    &__title
+        font-size: 150%
+
+        display: inline-block
+
+        margin: 0 -0.2em 0.5em -0.3em
+        padding: 0 0.2em
+
+        background: #fff
 
     &_now
-        width: 790px
+        width: $colWidth * 3 + $gapHorizontal * 2
 
         .event__title
             font-size: 300%
 
     &_next
-        width: 520px
+        width: $colWidth * 2 + $gapHorizontal
 
     &_outdated
-        color: rgba(0,0,0,0.5)
+        color: rgba(0, 0, 0, .6)
 
-@media screen and (max-width: 640px)
+
+@media screen and (max-width: $minimalPageWidth)
     .event
         width: 100%
 
-        &_now
-            outline: 5px solid #f3d52e
-            border: 1px solid transparent
+        & &__title
+            font-size: 150%
 
-        &__title
-            line-height: 1
-
-@media screen and (min-width: 641px) and (max-width: 1024px)
+@media screen and (min-width: $minimalPageWidth) and (max-width: $mediumPageWidth)
     .event
         &_now
-            width: auto
-            outline: 5px solid #f3d52e
-            border: 1px solid transparent
-
-        &__title
-            line-height: 1
+            width: $colWidth * 2 + $gapHorizontal
