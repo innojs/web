@@ -1,15 +1,40 @@
 //console.log(bh.apply({ block: 'event', elem: 'title' }));
 (function() {
-  var events;
-  var xhr = new XMLHttpRequest();
+	var events=[];
+	var ORG = "innojs";
+	var projects = "web-events";
 
-  xhr.open('GET', 'https://api.github.com/repos/innojs/web-events/issues', false);
-  xhr.send();
+	$.ajax({
+		url: "https://api.github.com/repos/innojs/web-events/issues",
+		method:"GET",
+		success: function(data) {
+			for (var i = 0; i < data.length; i++) {
+				events.push(parseEvent(data[i]));
+			}
 
-  if (xhr.status != 200) {
-    console.log("УВАГА")
-  } else {
-     events = xhr.responseText; 
-  }
+			//here logc to process update ui
+			console.log(events);
+		}
+	});
 
-})()
+	function parseEvent(issue){
+		var title = issue.title;
+		var result = issue.body.match(/^(```(.|\n|\r)+```)/g);
+		var eventJSON = result[0].replace(/```/g,"");
+		var result = JSON.parse(eventJSON);
+
+		var event = {
+						block: 'event',
+						content: [
+							{ elem: 'title', content: title },
+							{ elem: 'date', content: result.date  },
+							{ elem: 'location', content: result.location.title },
+							{ elem: 'coordinate', content: result.location.coords },
+							{ elem: 'description', content: result.description }
+						]
+	 }
+
+		return event;
+	}
+
+})();
