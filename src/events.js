@@ -1,1 +1,1 @@
-console.log('events')
+//console.log(bh.apply({ block: 'event', elem: 'title' }));
