@@ -1,0 +1,21 @@
+{
+  "name": "innojs",
+  "description": "InnopolisJS Web Site",
+  "version": "0.0.1",
+  "homepage": "http://innopolisjs.ru/",
+  "author": "Mikhail Troshev <mishanga@yandex-team.ru>",
+  "repository": "https://github.com/innojs/web",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "webpack": "1.13.2",
+    "css-loader": "0.23.1",
+    "style-loader": "0.13.1",
+    "stylus-loader": "2.3.1",
+    "stylus": "0.54.5"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
+}
