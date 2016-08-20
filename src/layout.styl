@@ -9,7 +9,24 @@
     font: 13px/1.3 Arial, sans-serif
 
 .layout
+    position: relative
+    z-index: 1
+
     padding: 60px 0 0 0
+
+    &::before
+        position: fixed
+        z-index: -1
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+
+        background: url(/img/background.jpg) 50% 50% no-repeat
+        background-size: cover
+        opacity: 0.5
+
+        content: ''
 
 .clearfix:after
     display: table
