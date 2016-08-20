@@ -20,3 +20,24 @@
 
     &_outdated
         color: rgba(0,0,0,0.5)
+
+@media screen and (max-width: 640px)
+    .event
+        width: 100%
+
+        &_now
+            outline: 5px solid #f3d52e
+            border: 1px solid transparent
+
+        &__title
+            line-height: 1
+
+@media screen and (min-width: 641px) and (max-width: 1024px)
+    .event
+        &_now
+            width: auto
+            outline: 5px solid #f3d52e
+            border: 1px solid transparent
+
+        &__title
+            line-height: 1
