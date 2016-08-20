@@ -1,14 +1,15 @@
 OAuth.initialize('-Rzipes15nnYRX0CDOrIUEb-4RE');
 var user_token;
+var user_id;
 
 $('.header__add-event').on('click', function() {
-  OAuth.popup('github',{cache: true})
+  OAuth.popup('github', { cache: true })
   .then(function(github) {
     user_token = github.access_token;
-    return github.get('/user');
+    return github.get('/user')
   })
   .then(function(data) {
-    console.log(data);
+    user_id = data.id;
     var form = $(bh.apply({
         block: 'form',
         content: [
@@ -44,26 +45,13 @@ function addEvent(event){
 
 function createIssue(issueJSON) {
   $.ajax({
-    url: "https://api.github.com/repos/innojs/web-events/issues?access_token=" + user_token,
+    url: "https://api.github.com/repos/innojs/web-events/issues?access_token=3b5f1cba3fbb7f2a9677ffe83e9c8aa3e9d24f66",
     method: "POST",
-    data: JSON.stringify({
-      "test": "title"
-    }),
+    data: issueJSON,
     success: function() {
-      console.log("lol");
+      console.log("success");
     }
   });
-  // OAuth.popup('github',{cache: true})
-  // .then(function(github) {
-  //   return github.post('/repos/innojs/web-events/issues?access_token=' + user_token, {
-  //     data: {
-  //       "title": "test"
-  //     }
-  //   });
-  // })
-  // .then(function() {
-  //   console.log('success');
-  // })
 }
 
 function transformEvent(event){
@@ -75,8 +63,3 @@ function transformEvent(event){
   };
   return JSON.stringify(newIssue);
 }
-
-
-// $('.form__control>button').on('click', function() {
-//   $('.feed').remove(this);
-// })
