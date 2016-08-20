@@ -1,7 +1,16 @@
-.feed
-    background: #fff
-    padding: 20px 0 0 20px
+@import('../../variables.styl')
 
-@media screen and (max-width: 640px)
+.feed
+    width: $colWidth * 3 + $gapHorizontal * 4
+    margin: 0 auto
+    padding: $layoutGapVertical 0 0 $layoutGapHorizontal
+    box-sizing: border-box
+
+@media screen and (max-width: $minimalPageWidth)
     .feed
-        padding: 20px
+        width: auto
+        padding: $layoutGapVertical $layoutGapHorizontal
+
+@media screen and (min-width: $minimalPageWidth) and (max-width: $mediumPageWidth)
+    .feed
+        width: $colWidth * 2 + $gapHorizontal * 3
