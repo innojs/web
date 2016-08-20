@@ -1,3 +1,5 @@
+@import('../../variables.styl')
+
 .header
     position: fixed
     z-index: 100
@@ -9,3 +11,22 @@
 
     background: #f7df1e
     border-bottom: 1px solid rgba(0, 0, 0, 0.5)
+
+    &__add-event
+        font-size: 120%
+        height: 30px
+        margin-top: 14px
+        margin-right: $layoutGapHorizontal
+        box-sizing: border-box
+        float: right
+
+        &::before
+            content: 'Добавить событие'
+
+@media screen and (max-width: 540px)
+    .header__add-event::before
+        content: '+ событие'
+
+@media screen and (max-width: 460px)
+    .header__add-event::before
+        content: '+'

@@ -2,8 +2,7 @@
     border: 0
     background: #fff
     height: 30px
-    margin: 10px
-    float: right
+    margin: 0
     border-radius: 2px
     padding: 0 15px
     box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.5)
@@ -16,18 +15,4 @@
     outline: none
 
     &:active
-        box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.5)
-
-    &_add-event
-        font-size: 120%
-        height: 30px
-        margin: 10px
-        box-sizing: border-box
-        float: right
-
-        &::before
-            content: 'Добавить событие'
-
-@media screen and (max-width: 640px)
-    .button_add-event::before
-        content: '+ событие'
+        box-shadow: 0 0 1 0 rgba(0, 0, 0, 0.5)
