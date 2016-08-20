@@ -1,26 +1,32 @@
-.header
-    height: 50px
-    background: white
-    border-bottom: 2px solid black
+@import('../../variables.styl')
 
-    &__title
-        font-size: 300%
-        line-height: 50px
-        padding: 0 20px
-        float: left
+.header
+    position: fixed
+    z-index: 100
+    top: 0
+    left: 0
+    right: 0
+
+    height: 60px
+
+    background: $yellowColor
+    border-bottom: 1px solid $borderColor
 
     &__add-event
-        border: 1px solid black
-        background: white
-        font-size: 150%
+        font-size: 120%
         height: 30px
-        margin: 10px
+        margin-top: 14px
+        margin-right: $layoutGapHorizontal
         box-sizing: border-box
         float: right
 
         &::before
             content: 'Добавить событие'
 
-@media screen and (max-width: 640px)
+@media screen and (max-width: 540px)
     .header__add-event::before
         content: '+ событие'
+
+@media screen and (max-width: 460px)
+    .header__add-event::before
+        content: '+'
