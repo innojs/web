@@ -21,6 +21,29 @@
     &_outdated
         color: rgba(0,0,0,0.5)
 
+    &__place
+        text-transform: uppercase
+        border: 1px solid #ccc
+        border-radius: 5px
+        padding: 6px 10px 2px
+        display: inline-block
+        margin-bottom: 15px
+        position: relative
+        padding: 10px 10px 8px 25px
+        &::before
+            content: ''
+            display: inline-block
+            width: 16px
+            height: 16px
+            background-image: url('/img/location.svg')
+            background-repeat: no-repeat
+            background-position: 0px -64px
+            vertical-align: middle
+            transform: scale(1.5, 1.5)
+            position: absolute
+            left: 7px;
+            top: 10px;
+
 @media screen and (max-width: 640px)
     .event
         width: 100%
