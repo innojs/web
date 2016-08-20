@@ -18,10 +18,23 @@
 	});
 
 	function parseEvent(issue){
+		var title = issue.title;
 		var result = issue.body.match(/^(```(.|\n|\r)+```)/g);
 		var eventJSON = result[0].replace(/```/g,"");
 		var result = JSON.parse(eventJSON);
-		return result;
+
+		var event = {
+						block: 'event',
+						content: [
+							{ elem: 'title', content: title },
+							{ elem: 'date', content: result.date  },
+							{ elem: 'location', content: result.location.title },
+							{ elem: 'coordinate', content: result.location.coords },
+							{ elem: 'description', content: result.description }
+						]
+	 }
+
+		return event;
 	}
 
 })();
